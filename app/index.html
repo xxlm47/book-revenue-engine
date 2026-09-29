@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Revenue Engine</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:900px;margin:auto;padding:24px;line-height:1.5}input,textarea,button{font:inherit;width:100%;box-sizing:border-box;padding:12px;margin:6px 0}button{cursor:pointer}.card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:12px 0}pre{white-space:pre-wrap;background:#f5f5f5;padding:12px;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>Book Revenue Engine</h1>
+<p>Evidence-first publishing workflow. $0 startup-cost target. Human approval before publication.</p>
+<div class="card">
+<label>Topic</label><input id="topic" placeholder="e.g. QuickBooks for freelancers">
+<label>Target reader</label><input id="audience" placeholder="e.g. new freelancers">
+<label>Desired outcome</label><textarea id="outcome" placeholder="What should the reader accomplish?"></textarea>
+<button onclick="makeBrief()">Create project brief</button>
+</div>
+<div class="card"><h2>Pipeline</h2><pre>TOPIC → MARKET SCAN → DEMAND → COMPETITORS → REVIEWS → GAP → GO/NO-GO → OUTLINE → DRAFT → FACT CHECK → EDIT → PACKAGE → LAUNCH → MEASURE → UPDATE</pre></div>
+<div class="card"><h2>Brief</h2><pre id="output">Enter a topic to create a local project brief.</pre></div>
+<script>
+function makeBrief(){const t=document.querySelector('#topic').value.trim(),a=document.querySelector('#audience').value.trim(),o=document.querySelector('#outcome').value.trim(); if(!t||!a||!o){document.querySelector('#output').textContent='Complete topic, audience, and outcome first.';return;} const slug=t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); document.querySelector('#output').textContent=JSON.stringify({project_name:t,slug,target_reader:a,desired_outcome:o,startup_cost_usd:0,status:'idea',next:'research demand before drafting'},null,2);}
+</script>
+</body></html>
