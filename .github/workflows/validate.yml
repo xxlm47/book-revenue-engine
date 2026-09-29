@@ -1,4 +1,4 @@
-name: Validate
+name: Validate Book Revenue Engine
 
 on:
   push:
@@ -15,4 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Validate structure
-        run: bash scripts/validate-book.sh .
+        run: bash scripts/validate-project.sh
+      - name: Check JSON configuration
+        run: python -m json.tool config/settings.json >/dev/null
